@@ -4,6 +4,7 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.28%2B-FF4B4B.svg)](https://streamlit.io/)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.0%2B-F7931E.svg)](https://scikit-learn.org/)
 
+### 🚀 [**View Live Demo Here**](https://hybrid-movie-recommender-by-harsh-gothi.streamlit.app/)
 An intelligent movie recommendation engine that combines content-based and collaborative filtering to deliver personalized movie suggestions. Built with Streamlit and powered by machine learning algorithms including TF-IDF and Singular Value Decomposition (SVD).
 
 ![Demo Screenshot](images/img.png)
