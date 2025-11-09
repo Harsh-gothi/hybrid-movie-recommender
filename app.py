@@ -173,7 +173,7 @@ st.markdown(
     "Combines **Content-Based Filtering** (what's in the movie) with **Collaborative Filtering** (what similar users like).")
 
 # --- Check for required files ---
-required_files = ['movies_metadata.csv', 'credits.csv', 'keywords.csv', 'links_small.csv', 'ratings_small.csv']
+required_files = ['files/movies_metadata.csv', 'files/credits.csv', 'files/keywords.csv', 'files/links_small.csv', 'files/ratings_small.csv']
 files_missing = False
 for file in required_files:
     if not os.path.exists(file):
