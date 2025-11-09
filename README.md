@@ -246,7 +246,7 @@ Result: Movies similar to Pulp Fiction that User 150 might enjoy
 hybrid-movie-recommender/
 │
 ├── app.py                          # Main Streamlit application
-├── preprocess_data.py              # Data processing and model training script
+├── generate_pickle.py              # Data processing and model training script
 ├── requirements.txt                # Python dependencies
 ├── .env                            # API keys (not in repo)
 ├── .gitignore                      # Git ignore file
