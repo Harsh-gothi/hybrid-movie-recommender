@@ -178,25 +178,7 @@ TMDB_API_KEY=your_api_key_here
 
 **Important:** Add `.env` to your `.gitignore` to keep your API key secure.
 
-### Step 6: Pre-process Data (One-Time Setup)
-
-Before running the app for the first time, you need to process the data and train the models:
-
-```bash
-python genrate_pickle.py
-```
-
-This script will:
-- Load and clean all CSV files
-- Train the TF-IDF vectorizer on movie content
-- Train the SVD collaborative filtering model
-- Save all processed data to `movie_recommender_data.pkl` (approximately 50-100 MB)
-
-**Note:** This process takes 2-5 minutes and only needs to be run once. The pickle file is then loaded instantly by the Streamlit app.
-
-## 🚀 Usage
-
-### Running the Application
+## 🚀 How to Run
 
 From the project directory with your virtual environment activated:
 
@@ -240,6 +222,22 @@ User ID: 150
 Result: Movies similar to Pulp Fiction that User 150 might enjoy
 ```
 
+### 🔧 (Optional) Developer: Re-training the Model
+
+#### If you want to modify the data or models, you can re-generate the pickle file.
+1. **Download Datasets:** Download the Movie Dataset on Kaggle. Place the following 5 files into the /files directory:
+* movies_metadata.csv 
+* credits.csv
+* keywords.csv
+* links_small.csv
+* ratings_small.csv
+
+2. Run the Training Script This will read the raw CSVs, train both models, and create a new movie_recommender_data.pkl file.
+
+```bash
+python generate_pickle.py
+```
+
 ## 📁 Project Structure
 
 ```
@@ -250,13 +248,14 @@ hybrid-movie-recommender/
 ├── requirements.txt                # Python dependencies
 ├── .env                            # API keys (not in repo)
 ├── .gitignore                      # Git ignore file
-│
-├── movies_metadata.csv             # Movie metadata (from Kaggle)
-├── credits.csv                     # Cast and crew data
-├── keywords.csv                    # Movie keywords
-├── links_small.csv                 # MovieLens to TMDb ID mapping
-├── ratings_small.csv               # User ratings data
 ├── movie_recommender_data.pkl      # Pre-processed models (generated)
+│
+├── files/
+│   ├── movies_metadata.csv             # Movie metadata (from Kaggle)
+│   ├── credits.csv                     # Cast and crew data
+│   ├── keywords.csv                    # Movie keywords
+│   ├── links_small.csv                 # MovieLens to TMDb ID mapping
+│   ├── ratings_small.csv               # User ratings data
 │
 ├── images/                         # Screenshots for README
 │   ├── img.png
@@ -333,56 +332,6 @@ The app includes built-in rate limiting (`time.sleep(0.05)`) and comprehensive e
 - **Threshold:** 90th percentile of vote counts
 - **Purpose:** Cold-start handling for new users
 
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**1. "Missing required file" error**
-```
-Solution: Ensure all 5 CSV files from Kaggle are in the project root directory
-Files needed: movies_metadata.csv, credits.csv, keywords.csv, links_small.csv, ratings_small.csv
-```
-
-**2. "movie_recommender_data.pkl not found"**
-```
-Solution: Run the preprocessing script first:
-python preprocess_data.py
-```
-
-**3. "NLTK data not found"**
-```
-Solution: The preprocess script will auto-download required NLTK data
-If issues persist, manually run: python -c "import nltk; nltk.download('punkt')"
-```
-
-**4. "Invalid API key" error**
-```
-Solution: Verify your TMDb API key in the .env file is correct
-Test your key at: https://www.themoviedb.org/settings/api
-```
-
-**5. Movie posters not loading**
-```
-Solution: 
-- Check your internet connection
-- Verify TMDb API key validity
-- Check if you've exceeded API rate limits (40 req/10 sec)
-```
-
-**6. "Movie not found" error**
-```
-Solution: The selected movie might not be in the processed dataset after linking
-with MovieLens IDs. Try another movie from the dropdown.
-```
-
-**7. High memory usage**
-```
-Solution: 
-- The pickle file is memory-intensive (~100 MB)
-- Ensure sufficient RAM (minimum 4 GB recommended)
-- Close other applications if needed
-```
-
 ### Performance Tips
 
 - **First Load:** Model loading takes ~5 seconds but is cached by Streamlit
@@ -402,21 +351,6 @@ View Streamlit cache location:
 ```bash
 streamlit cache clear
 ```
-
-## 🚀 Future Enhancements
-
-Potential improvements for future versions:
-
-- [ ] Add user authentication and personalized user profiles
-- [ ] Implement real-time model retraining with new ratings
-- [ ] Add genre-based filtering options
-- [ ] Include movie trailers and additional metadata
-- [ ] Implement A/B testing for recommendation strategies
-- [ ] Add export functionality for recommendation lists
-- [ ] Support for multi-language content
-- [ ] Integration with additional data sources (IMDb, Rotten Tomatoes)
-- [ ] Deep learning models (Neural Collaborative Filtering)
-- [ ] Context-aware recommendations (time, mood, season)
 
 ## 🙏 Acknowledgments
 
