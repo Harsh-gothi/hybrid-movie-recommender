@@ -30,11 +30,11 @@ print("Starting data processing...")
 
 # --- Load Data ---
 print("Loading CSV files...")
-movies_df = pd.read_csv('movies_metadata.csv', low_memory=False)
-credits_df = pd.read_csv('credits.csv')
-keywords_df = pd.read_csv('keywords.csv')
-links_df = pd.read_csv('links_small.csv')
-ratings_df = pd.read_csv('ratings_small.csv')
+movies_df = pd.read_csv('files/movies_metadata.csv', low_memory=False)
+credits_df = pd.read_csv('files/credits.csv')
+keywords_df = pd.read_csv('files/keywords.csv')
+links_df = pd.read_csv('files/links_small.csv')
+ratings_df = pd.read_csv('files/ratings_small.csv')
 
 # --- A. CONTENT-BASED MODEL PREP ---
 print("Processing movie metadata...")
