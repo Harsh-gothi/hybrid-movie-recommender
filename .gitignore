@@ -1,6 +1,7 @@
 # Environment variables (API keys)
 .env
 
+*.csv
 
 # Python
 __pycache__/
