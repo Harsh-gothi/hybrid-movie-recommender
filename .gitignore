@@ -1,8 +1,6 @@
 # Environment variables (API keys)
 .env
 
-# Large CSV files
-*.csv
 
 # Python
 __pycache__/
@@ -26,3 +24,6 @@ Thumbs.db
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Pickled models
+*.pkl
